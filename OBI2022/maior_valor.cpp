@@ -1,19 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int next(int n){
-    int digitos = floor(log10(n)) + 1;
-    if(n == 0) digitos = 1;
-
-    for(int i = 2; i<=digitos; ++i){
-        if(n%(int)pow(10,i) > 1);
+int soma_digitos(int x) {
+    int soma = 0;
+    while (x > 0) {
+        soma += x % 10;
+        x /= 10;
     }
+    return soma;
 }
 
-int main(){
-    int n, m, s;
-    cin >> n >> m >> s;
+int main() {
+    int N, M, S;
+    cin >> N >> M >> S;
 
-    int num;
-    
+    for (int i = M; i >= N; i--) {
+        if (soma_digitos(i) == S) {
+            cout << i << endl;
+            return 0;
+        }
+    }
+
+    cout << -1 << endl;
+
+    return 0;
 }
